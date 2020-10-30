@@ -4,6 +4,7 @@ const Sequelize = require('sequelize')
 
 //import routers
 const projectsRouter = require('./routes/projects.routes')
+const usersRouter = require('./routes/users.routes')
 
 const sequelize = new Sequelize('postgresql://localhost:5500')
 sequelize.authenticate()
@@ -16,6 +17,7 @@ const port = 5000
 
 app.use(express.json())
 app.use('/projects', projectsRouter)
+app.use('/users', usersRouter)
 
 app.get('/', (req, res) => res.json({message: "Hello World"}));
 
