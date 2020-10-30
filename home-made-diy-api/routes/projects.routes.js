@@ -1,9 +1,8 @@
-var express = require('express')
-var projects = express.Router()
+const { Router } = require('express');
+const projectsController = require("../controllers/projects.controller");
+const router = Router();
 
-projects.get('/', (req, res, next)=>{
-   res.json({"message": "You're in the Projects Router" })
-})
+router.post('/', projectsController.createProject)
+router.get('/', projectsController.getAllProjects)
 
-
-module.exports = projects
+module.exports = router
