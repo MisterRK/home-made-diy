@@ -1,16 +1,14 @@
-const express = require('express')
-const { Sequelize } = require('sequelize')
-const users = express.Router()
-const User = '../models/user.model.js'
-const addJane = require('../models/user.model')
+const { Router } = require('express')
+const usersController = require('../controllers/users')
+const router = Router()
 
-users.get('/', (req, res, next)=>{
-   res.json({"message": "You're in the Users Router" })
-})
-
-users.get('/add', (req, res, next)=> {
-   addJane()
-})
+// no need to include /api/users in the routes below.abs
+// we already used that to get into this Router
+router.get('/', usersController.getAllUsers)
+router.post('/', usersController.createUser)
+router.get('/:id', usersController.getUserById)
+router.put('/:id', usersController.updateUser)
+router.delete('/:id', usersController.deleteUser)
 
 
-module.exports = users
+module.exports = router

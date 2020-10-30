@@ -1,5 +1,5 @@
 const express = require('express')
-const routes = require('./routes')
+const usersRouter = require('./routes/users.routes')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 
@@ -10,7 +10,7 @@ const app = express()
 app.use(logger('dev'))
 app.use(bodyParser.json());
 
-app.use('/api', routes)
+app.use('/api/users', usersRouter)
 
 
 app.listen(PORT, ()=> console.log("Server is Listening! Port: ", PORT))
