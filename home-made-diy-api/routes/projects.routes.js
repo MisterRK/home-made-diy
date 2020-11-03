@@ -1,8 +1,9 @@
 const { Router } = require('express');
 const projectsController = require("../controllers/projects.controller");
 const router = Router();
+const upload = require('../config/multer.config')
 
-router.post('/', projectsController.createProject)
+router.post('/', upload.single("projectImage"), projectsController.createProject)
 router.get('/', projectsController.getAllProjects)
 
 module.exports = router

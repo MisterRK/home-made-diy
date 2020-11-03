@@ -19,9 +19,11 @@ module.exports = (sequelize, DataTypes) => {
 	Project.init(
 		{
 			title: DataTypes.STRING,
-			imageUrl: DataTypes.STRING,
 			description: DataTypes.TEXT,
 			userId: DataTypes.INTEGER,
+			imageType: DataTypes.STRING,
+			imageName: DataTypes.STRING,
+			imageData: DataTypes.BLOB('long')
 		},
 		{
 			sequelize,

@@ -11,11 +11,17 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      imageUrl: {
-        type: Sequelize.STRING
-      },
       description: {
         type: Sequelize.TEXT
+      },
+      imageType: {
+          type: Sequelize.STRING
+      },
+      imageName: {
+        type: Sequelize.STRING
+      },
+      imageData: {
+        type: Sequelize.BLOB
       },
       userId: {
         type: Sequelize.INTEGER,

@@ -2,10 +2,17 @@ const { Project, User } = require('../models')
 
 const createProject = async (req, res) => {
    try {
-      const project = await Project.create(req.body);
-      return res.status(201).json({
-         project,
-      })
+      const project = await Project.create({
+         title: req.body.title,
+         description: req.body.description,
+         userId: req.body.userId,
+         image: {
+            type: req.file.mimetype,
+            name: req.file.originalname,
+            data: req.file.buffer
+         }
+      });
+         return res.status(201).json({project})
    } catch (error) {
       return res.status(500).json({error: error.message})
    }
