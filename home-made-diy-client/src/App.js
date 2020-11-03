@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import axios from 'axios'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    img: null
+  }
+
+  componentDidMount(){
+    axios.get('http://localhost:5000/api/files/1')
+      .then(res => this.setState({img: res.data.imgString}))
+      .catch(err => console.log(err.message))
+  }
+
+  render(){
+    console.log(this.state)
+    return (
+      <div className="App">
+        <h1>Whats up</h1>
+        <img src={`data:image/png;base64,${this.state.img}`}></img>
+      </div>
+    );
+  }
 }
 
 export default App;
+
+// `data:image/jpeg;base64,${data}`

@@ -23,7 +23,7 @@ const downloadFileById = async (req, res) => {
          where: {id: id}
       })
       if(file){
-         const imgString = file.dataValues.data.toString()
+         const imgString = file.dataValues.data.toString('base64')
          return res.status(200).json({file: file, imgString: imgString})
       }
       return res.status(404).send("File with the specified ID does not exist")
