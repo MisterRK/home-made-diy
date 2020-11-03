@@ -6,7 +6,7 @@ const fileController = require('../controllers/file.controller')
 
 router.post('/', upload.single("photo"), fileController.uploadFile)
 
-router.get('/:id', fileController.downloadFile )
+router.get('/:id', fileController.downloadFileById )
 
 router.get('/', fileController.getAllFiles)
 

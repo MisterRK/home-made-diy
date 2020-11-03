@@ -1,5 +1,6 @@
 const { File } = require('../models')
 const stream = require('stream')
+const { read } = require('fs')
 
 const uploadFile = async (req, res) => {
    console.log("inside the uploadFile Method")
@@ -15,17 +16,17 @@ const uploadFile = async (req, res) => {
    }
 }
 
-const downloadFile = async (req, res) => {
+const downloadFileById = async (req, res) => {
    try {
-      File.findById(req.params.id).then(file => {
-         const fileContents = Buffer.from(file.data, "base64")
-         const readStream = new stream.PassThrough();
-         readStream.end(fileContents);
-
-         res.set("Content-disposition", 'attachment; filename=', file.name);
-         res.set('Content-Type', file.type)
-         readStream.pipe(res)
+      const { id } = req.params;
+      const file = await File.findOne({
+         where: {id: id}
       })
+      if(file){
+         const imgString = file.dataValues.data.toString()
+         return res.status(200).json({file: file, imgString: imgString})
+      }
+      return res.status(404).send("File with the specified ID does not exist")
    } catch (error) {
       console.log("error downloading file", error.message)
       res.status(500).json({error: error.message})
@@ -43,6 +44,6 @@ const getAllFiles = async (req, res) => {
 
 module.exports = {
    uploadFile,
-   downloadFile,
+   downloadFileById,
    getAllFiles
 }
