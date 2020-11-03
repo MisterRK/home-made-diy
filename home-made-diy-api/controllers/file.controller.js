@@ -4,12 +4,12 @@ const stream = require('stream')
 const uploadFile = async (req, res) => {
    console.log("inside the uploadFile Method")
    try {
-      File.create({
+      const file = await File.create({
          type: req.file.mimetype,
          name: req.file.originalname,
          data: req.file.buffer
-      }).then (res => console.log("File Uploaded Successfull", file.originalname))
-      res.status(201).json({message: 'file successfully uploaded'})
+      })
+      return res.status(201).json({file})
    } catch(err){
       return res.status(500).json({err: err.message})
    }
@@ -32,7 +32,17 @@ const downloadFile = async (req, res) => {
    }
 }
 
+const getAllFiles = async (req, res) => {
+   try {
+      const files = await File.findAll();
+      return res.status(200).json({files})
+   } catch (error) {
+      return res.status(500).send(error.message)
+   }
+}
+
 module.exports = {
    uploadFile,
-   downloadFile
+   downloadFile,
+   getAllFiles
 }

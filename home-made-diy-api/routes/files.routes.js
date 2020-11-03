@@ -8,6 +8,6 @@ router.post('/', upload.single("photo"), fileController.uploadFile)
 
 router.get('/:id', fileController.downloadFile )
 
-// router.get('/', fileController.getAllFiles)
+router.get('/', fileController.getAllFiles)
 
 module.exports = router
