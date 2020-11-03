@@ -6,11 +6,9 @@ const createProject = async (req, res) => {
          title: req.body.title,
          description: req.body.description,
          userId: req.body.userId,
-         image: {
-            type: req.file.mimetype,
-            name: req.file.originalname,
-            data: req.file.buffer
-         }
+         imageType: req.file.mimetype,
+         imageName: req.file.originalname,
+         imageData: req.file.buffer
       });
          return res.status(201).json({project})
    } catch (error) {
