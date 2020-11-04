@@ -4,7 +4,7 @@ import axios from 'axios'
 
 class App extends React.Component {
   state = {
-    project: null
+    project: ""
   }
 
   componentDidMount(){
@@ -18,7 +18,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Whats up</h1>
-        <img src={`data:image/png;base64,${this.state.img}`}></img>
+        <img src={`data:image/png;base64,${this.state.project.imageData}`}></img>
       </div>
     );
   }
