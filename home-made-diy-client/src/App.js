@@ -4,12 +4,12 @@ import axios from 'axios'
 
 class App extends React.Component {
   state = {
-    img: null
+    project: null
   }
 
   componentDidMount(){
-    axios.get('http://localhost:5000/api/files/1')
-      .then(res => this.setState({img: res.data.imgString}))
+    axios.get('http://localhost:5000/api/projects')
+      .then(res => this.setState({project: res.data.projects[0]}))
       .catch(err => console.log(err.message))
   }
 
