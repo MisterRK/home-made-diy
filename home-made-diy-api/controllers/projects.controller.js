@@ -1,4 +1,4 @@
-const { Project, User} = require("../models");
+const { Project, User, Step} = require("../models");
 
 const createProject = async (req, res) => {
 	try {
@@ -24,6 +24,9 @@ const getAllProjects = async (req, res) => {
 					model: User,
 					as: "createdBy",
 				},
+				{
+					model: Step,
+				}
 			],
       })
       .then(projects => {
