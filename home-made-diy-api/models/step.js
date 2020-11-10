@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       step.belongsTo(models.Project, {
-        foreignKey: "userId",
+        foreignKey: "projectId",
 				onDelete: "CASCADE"
       })
     }

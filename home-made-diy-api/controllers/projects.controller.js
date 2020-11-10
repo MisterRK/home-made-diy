@@ -1,5 +1,4 @@
-const { Project, User } = require("../models");
-
+const { Project, User, Step } = require("../models");
 const createProject = async (req, res) => {
 	try {
 		const project = await Project.create({
@@ -9,18 +8,12 @@ const createProject = async (req, res) => {
 			imageType: req.file.mimetype,
 			imageName: req.file.originalname,
 			imageData: req.file.buffer,
-		});
+		})
 		return res.status(201).json({ project });
 	} catch (error) {
 		return res.status(500).json({ error: error.message });
 	}
 };
-
-// const convertImage = (imageDate) => {
-// 	console.log("inside convertImage");
-// 	const imgString = imageData.data.toString("base64");
-// 	return imgString;
-// };
 
 const getAllProjects = async (req, res) => {
 	try {
@@ -33,13 +26,11 @@ const getAllProjects = async (req, res) => {
 			],
       })
       .then(projects => {
-         console.log("first then",projects)
          projects.map(project => {
             const projectImage = project.imageData.toString('base64')
             project['imageData'] = projectImage
             }
          )
-         // console.log("after map", projects)
          return projects
       })
       .then(projects => {
