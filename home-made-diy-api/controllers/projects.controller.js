@@ -1,4 +1,5 @@
-const { Project, User, Step } = require("../models");
+const { Project, User} = require("../models");
+
 const createProject = async (req, res) => {
 	try {
 		const project = await Project.create({

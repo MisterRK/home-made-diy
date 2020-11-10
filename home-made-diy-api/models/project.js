@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
 				onDelete: "CASCADE",
 				as: "createdBy"
 			});
+			Project.hasMany(models.Step, {
+				foreignKey: "id",
+			})
 		}
 	}
 	Project.init(
