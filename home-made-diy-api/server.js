@@ -3,6 +3,7 @@ const app = express()
 const usersRouter = require('./routes/users.routes')
 const projectsRouter = require('./routes/projects.routes')
 const filesRouter = require('./routes/files.routes')
+const stepsRouter = require('./routes/steps.routes')
 const bodyParser = require('body-parser')
 const logger = require('morgan')
 const Sequelize = require('sequelize')
@@ -24,6 +25,7 @@ app.use(bodyParser.json());
 
 app.use('/api/users', usersRouter)
 app.use('/api/projects', projectsRouter)
+app.use('/api/steps', stepsRouter)
 app.use('/api/files', filesRouter)
 
 
