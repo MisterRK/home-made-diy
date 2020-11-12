@@ -1,12 +1,14 @@
 import React from 'react'
 import './App.css';
-import axios from 'axios'
+
+//component imports
+import Header from './components/Header/Header'
 
 class App extends React.Component {
   render(){
     return (
       <div className="App">
-
+        <Header />
       </div>
     );
   }
