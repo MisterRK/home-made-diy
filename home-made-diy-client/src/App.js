@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.css';
+import {Route, Switch, Redirect} from 'react-router-dom';
 
 //component imports
 import Header from './components/Header/Header'
@@ -10,7 +10,9 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <ProjectsContainer/>
+        <Switch>
+          <Route exact path='/' component={ProjectsContainer} />
+        </Switch>
       </div>
     );
   }
