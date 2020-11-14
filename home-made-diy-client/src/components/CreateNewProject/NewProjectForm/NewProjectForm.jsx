@@ -14,10 +14,17 @@ const NewProjectForm = () => {
    })
 
    const handleChange = (e) =>{
-      setProjectInfo({
-         ...projectInfo,
-         [e.target.name]: e.target.value
-      })
+      if(e.target.name === 'projectImage'){
+            setProjectInfo({
+               ...projectInfo,
+               projectImage: URL.createObjectURL(e.target.files[0])
+            })
+      }else {
+         setProjectInfo({
+            ...projectInfo,
+            [e.target.name]: e.target.value
+         })
+      }
    }
    console.log(projectInfo)
 
@@ -46,7 +53,7 @@ const NewProjectForm = () => {
             <Form.File 
                name="projectImage"
                onChange={handleChange}/>
-            <ProjectImagePreview image={projectInfo.image} />
+            <ProjectImagePreview image={projectInfo.projectImage} />
          </Form.Group>
       </Form>
    );

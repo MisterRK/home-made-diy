@@ -4,9 +4,10 @@ import React from 'react';
 import Image from 'react-bootstrap/Image'
 
 const ProjectImagePreview = (props) => {
+   console.log("projectImagePreview=>", props)
    return (
       <>
-         {props.image !== null? <Image src={props.image} /> : null}
+         {props.image !== undefined? <Image src={props.image} /> : null}
       </>
    );
 };
