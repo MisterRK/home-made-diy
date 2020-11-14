@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+import ProjectImagePreview from './ProjectImagePreview/ProjectImagePreview'
+
+
 //bootstrap imports
 import Form from 'react-bootstrap/Form'
 
@@ -7,7 +10,7 @@ const NewProjectForm = () => {
    const [ projectInfo, setProjectInfo ] = useState({
       projectTitle: "",
       projectDescription: "",
-      projectImage: ""
+      projectImage: null
    })
 
    const handleChange = (e) =>{
@@ -43,6 +46,7 @@ const NewProjectForm = () => {
             <Form.File 
                name="projectImage"
                onChange={handleChange}/>
+            <ProjectImagePreview image={projectInfo.image} />
          </Form.Group>
       </Form>
    );

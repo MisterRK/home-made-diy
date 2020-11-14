@@ -3,11 +3,11 @@ import React from 'react';
 //bootstrap imports
 import Image from 'react-bootstrap/Image'
 
-const ProjectImagePreview = () => {
+const ProjectImagePreview = (props) => {
    return (
-      <div>
-         
-      </div>
+      <>
+         {props.image !== null? <Image src={props.image} /> : null}
+      </>
    );
 };
 
