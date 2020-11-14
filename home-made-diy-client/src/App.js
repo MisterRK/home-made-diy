@@ -4,6 +4,7 @@ import {Route, Switch, Redirect} from 'react-router-dom';
 //component imports
 import Header from './components/Header/Header'
 import ProjectsContainer from './components/ProjectsContainer/ProjectsContainer';
+import CreateNewProject from './components/CreateNewProject/CreateNewProject';
 
 class App extends React.Component {
   render(){
@@ -11,6 +12,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         <Switch>
+          <Route exact path='/create-new-project' component={CreateNewProject} />
           <Route exact path='/' component={ProjectsContainer} />
         </Switch>
       </div>
