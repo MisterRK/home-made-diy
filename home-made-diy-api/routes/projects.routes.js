@@ -5,5 +5,6 @@ const upload = require('../config/multer.config')
 
 router.post('/', upload.single("projectImage"), projectsController.createProject)
 router.get('/', projectsController.getAllProjects)
+router.delete('/:id', projectsController.deleteProjectById)
 
 module.exports = router

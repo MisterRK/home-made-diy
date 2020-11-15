@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import axios from 'axios'
+import axios from "axios";
 
 //component imports
 import ProjectImagePreview from "./ProjectImagePreview/ProjectImagePreview";
 
 //bootstrap imports
 import Form from "react-bootstrap/Form";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 const NewProjectForm = () => {
 	const [projectInfo, setProjectInfo] = useState({
-		projectTitle: "",
-		projectDescription: "",
+		title: "",
+		description: "",
 		projectImage: "",
 	});
 
@@ -32,14 +32,19 @@ const NewProjectForm = () => {
 			});
 		}
 	};
-	
+
 	const handleSubmit = (e) => {
-		e.preventDefault()
-		let projectData = new FormData()
-	}
-   
-   console.log(projectInfo);
-   
+		e.preventDefault();
+		let projectData = new FormData(e.target);
+		axios({
+			method: "post",
+			url: "http://localhost:5000/api/projects",
+			data: projectData,
+		})
+			.then((res) => console.log(res))
+			.catch((err) => console.log(err));
+	};
+
 	return (
 		<Form encType="multipart/form-data" onSubmit={handleSubmit}>
 			<h2>Get Started with the Basics</h2>
@@ -48,8 +53,8 @@ const NewProjectForm = () => {
 				<Form.Control
 					name="projectTitle"
 					type="text"
-               value={projectInfo.projectTitle}
-               onChange={handleChange}
+					value={projectInfo.projectTitle}
+					onChange={handleChange}
 					placeholder="Project Title"
 				/>
 			</Form.Group>
@@ -59,8 +64,8 @@ const NewProjectForm = () => {
 				<Form.Control
 					name="projectDescription"
 					as="textarea"
-               value={projectInfo.projectDescription}
-               onChange={handleChange}
+					value={projectInfo.projectDescription}
+					onChange={handleChange}
 					rows={5}
 					placeholder="Project Description"
 				/>
@@ -68,19 +73,21 @@ const NewProjectForm = () => {
 
 			<Form.Group>
 				<Form.Label>Add a Cover Photo for your Project</Form.Label>
-            <Form.File 
-               name="projectImage" 
-               defaultValue=""
-               onChange={handleChange} />
+				<Form.File
+					name="projectImage"
+					defaultValue=""
+					onChange={handleChange}
+				/>
 
 				{projectInfo.projectImage !== "" ? (
 					<ProjectImagePreview image={projectInfo.projectImage} />
 				) : null}
 			</Form.Group>
 
-			<Button type="submit" variant='success'>Submit</Button>
-			<Button variant='danger'>Cancel</Button>
-
+			<Button type="submit" variant="success">
+				Submit
+			</Button>
+			<Button variant="danger">Cancel</Button>
 		</Form>
 	);
 };
