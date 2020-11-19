@@ -12,13 +12,17 @@ const ProjectCard = (props) => {
 	const { title, description, imageData, imageType } = props.project;
 
 	const imageSrcString = `data:${imageType};base64,${imageData}`;
+	let shortDescription;
+	if(description){
+		shortDescription = description.slice(0,50) + "..."
+	}
 
 	return (
 		<Card style={{ width: "18rem", marginTop: "8%" }}>
-			<Card.Img variant="top" src={imageSrcString} />
+			<Card.Img variant="top" src={imageSrcString} height="300px" />
 			<Card.Body>
 				<Card.Title>{title}</Card.Title>
-				<Card.Text>{description}</Card.Text>
+				<Card.Text>{shortDescription}</Card.Text>
 				<Button
 					variant="white"
 					onClick={() => {
