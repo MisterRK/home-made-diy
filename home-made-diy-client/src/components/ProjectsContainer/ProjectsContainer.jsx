@@ -17,18 +17,11 @@ const ProjectsContainer = () => {
       .then(res => setProjects(res.data.projects))
    }, [])
 
-   console.log(projects)
    return (
       <Container>
          <h1>Let's Look at Some projects</h1>
          <Row className="justify-content-between ">
             {projects && projects.map(project => <ProjectCard project={project} />)}
-            {/* <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/>
-            <ProjectCard/> */}
          </Row>
       </Container>
    );
