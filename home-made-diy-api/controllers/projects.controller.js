@@ -1,10 +1,12 @@
 const { Project, User, Step} = require("../models");
 
 const createProject = async (req, res) => {
+	console.log(req.body)
+	console.log(req.file)
 	try {
 		const project = await Project.create({
-			title: req.body.title,
-			description: req.body.description,
+			title: req.body.projectTitle,
+			description: req.body.projectDescription,
 			userId: req.body.userId,
 			imageType: req.file.mimetype,
 			imageName: req.file.originalname,
