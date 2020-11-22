@@ -8,7 +8,7 @@ import ProjectImagePreview from "./ProjectImagePreview/ProjectImagePreview";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-const NewProjectForm = () => {
+const NewProjectForm = (props) => {
 	const [projectInfo, setProjectInfo] = useState({
 		title: "",
 		description: "",
@@ -41,6 +41,7 @@ const NewProjectForm = () => {
 			url: "http://localhost:5000/api/projects",
 			data: projectData,
 		})
+		//props.history.push('/projectId/add-step-1)
 			.then((res) => console.log(res))
 			.catch((err) => console.log(err));
 	};
