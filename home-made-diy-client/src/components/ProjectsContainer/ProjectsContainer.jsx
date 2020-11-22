@@ -3,6 +3,7 @@ import axios from "axios";
 
 //component imports
 import ProjectCard from "./ProjectCard/ProjectCard";
+import PageLoading from "../PageLoading/PageLoading"
 
 //bootstrap imports
 import { Container, Row, Spinner } from "react-bootstrap";
@@ -19,26 +20,7 @@ const ProjectsContainer = () => {
 	return (
 		<Container>
 			<h1 style={{ textAlign: "center" }}>Let's Look at Some projects</h1>
-			{!projects && (
-				<div
-					style={{
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-						padding: "25%",
-					}}
-				>
-					<Spinner
-						style={{
-							height: "250px",
-							width: "250px",
-						}}
-						animation="border"
-					>
-						<span className="sr-only">Loading...</span>
-					</Spinner>
-				</div>
-			)}
+			{!projects && <PageLoading/>}
 			<Row className="justify-content-around">
 				{projects &&
 					projects.map((project) => <ProjectCard project={project} />)}
