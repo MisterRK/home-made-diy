@@ -45,6 +45,33 @@ const getAllProjects = async (req, res) => {
 	}
 };
 
+const getProjectById = async (req, res) => {
+	try {
+		const { id } = req.params;
+		const project = await Project.findAll({
+			where: {
+				id: id
+			},
+			include: [
+				{
+					model: User,
+					as: "createdBy"
+				},
+				{
+					model: Step
+				}
+			]
+		})
+		if(project){
+			return res.status(200).send(project)
+		}
+		throw new Error('project not found')
+
+	} catch (error) {
+		return res.status(500).send(error.message)
+	}
+}
+
 const deleteProjectById = async (req, res) => {
 	try {
 		const { id } = req.params;
@@ -64,5 +91,6 @@ const deleteProjectById = async (req, res) => {
 module.exports = {
 	createProject,
 	getAllProjects,
+	getProjectById,
 	deleteProjectById
 };
