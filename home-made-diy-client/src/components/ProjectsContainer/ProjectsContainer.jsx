@@ -11,15 +11,23 @@ const ProjectsContainer = () => {
 	const [projects, setProjects] = useState(null);
 
 	useEffect(() => {
-	   axios.get('http://localhost:5000/api/projects/')
-	   .then(res => setProjects(res.data.projects))
-	}, [projects])
+		axios
+			.get("http://localhost:5000/api/projects/")
+			.then((res) => setProjects(res.data.projects));
+	}, []);
 
 	return (
 		<Container>
 			<h1 style={{ textAlign: "center" }}>Let's Look at Some projects</h1>
 			{!projects && (
-				<div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', padding: "25%"}}>
+				<div
+					style={{
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						padding: "25%",
+					}}
+				>
 					<Spinner
 						style={{
 							height: "250px",
@@ -31,7 +39,7 @@ const ProjectsContainer = () => {
 					</Spinner>
 				</div>
 			)}
-			<Row className='justify-content-around'>
+			<Row className="justify-content-around">
 				{projects &&
 					projects.map((project) => <ProjectCard project={project} />)}
 			</Row>
