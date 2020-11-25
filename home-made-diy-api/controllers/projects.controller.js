@@ -50,7 +50,7 @@ const getAllProjects = async (req, res) => {
 const getProjectById = async (req, res) => {
 	try {
 		const { id } = req.params;
-		const project = await Project.findAll({
+		const project = await Project.findOne({
 			where: {
 				id: id
 			},
@@ -64,11 +64,18 @@ const getProjectById = async (req, res) => {
 				}
 			]
 		})
-		if(project){
-			return res.status(200).send(project)
-		}
-		throw new Error('project not found')
-
+		.then(project => {
+			// return res.status(200).send(project)	
+			const projectImage = project.imageData.toString('base64')
+			project['imageData'] = projectImage
+			return project
+		})
+		.then(project => {
+			if(project){
+				return res.status(200).json({project: project})
+			}
+			throw new Error('project not found')
+		})
 	} catch (error) {
 		return res.status(500).send(error.message)
 	}

@@ -9,9 +9,11 @@ import { Form } from 'react-bootstrap'
 const AddStepForm = () => {
    const [project, setProject] = useState(null)
 
-   useEffect(() => {
-      
-   }, [])
+   // useEffect(() => {
+	// 	axios
+	// 		.get("http://localhost:5000/api/projects/")
+	// 		.then((res) => setProject(res.data.projects));
+   // }, [])
    return (
       <div>
          {!project && <PageLoading/>}
