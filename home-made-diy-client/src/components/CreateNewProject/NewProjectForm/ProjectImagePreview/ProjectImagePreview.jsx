@@ -6,7 +6,7 @@ import Image from "react-bootstrap/Image";
 const ProjectImagePreview = (props) => {
 	return (
 		<>
-			<Image src={props.image} rounded height="300px" width="100%" />
+			<Image src={props.image} rounded height="300px" />
 		</>
 	);
 };

@@ -3,10 +3,10 @@ import axios from "axios";
 
 //components
 import PageLoading from "../PageLoading/PageLoading";
+import ProjectImagePreview from "../CreateNewProject/NewProjectForm/ProjectImagePreview/ProjectImagePreview";
 
 //bootstrap imports
-import { Form, Container } from "react-bootstrap";
-import ProjectImagePreview from "../CreateNewProject/NewProjectForm/ProjectImagePreview/ProjectImagePreview";
+import { Form, Container, Button } from "react-bootstrap";
 
 const AddStepForm = (props) => {
 	const [project, setProject] = useState(null);
@@ -82,6 +82,8 @@ const AddStepForm = (props) => {
 								<ProjectImagePreview image={step.stepImage} />
 							) : null}
 						</Form.Group>
+						<Button>Add Another Step</Button>
+						<Button>Publish Project</Button>
 					</Form>
 				</Container>
 			)}
