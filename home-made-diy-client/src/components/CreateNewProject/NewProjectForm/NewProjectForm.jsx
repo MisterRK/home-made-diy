@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { withRouter } from 'react-router' 
+import { withRouter } from "react-router";
 
 //component imports
 import ProjectImagePreview from "./ProjectImagePreview/ProjectImagePreview";
@@ -42,13 +42,14 @@ const NewProjectForm = (props) => {
 			url: "http://localhost:5000/api/projects",
 			data: projectData,
 		})
-		
-		// console.log(res)
-			.then((res) => props.history.push(`/${res.data.project.id}/add-step-1`) )
+			// console.log(res)
+			.then((res) =>
+				props.history.push(`/${res.data.project.id}/add-step-1`)
+			)
 			.catch((err) => console.log(err));
 	};
 
-	console.log(props)
+	console.log(props);
 	return (
 		<Form encType="multipart/form-data" onSubmit={handleSubmit}>
 			<h2>Get Started with the Basics</h2>
