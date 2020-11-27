@@ -1,5 +1,6 @@
 import React from 'react'
-import {Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch} from 'react-router-dom';
+
 
 //component imports
 import Header from './components/Header/Header'
@@ -11,7 +12,7 @@ import ProjectDetail from './components/ProjectDetail/ProjectDetail'
 class App extends React.Component {
   render(){
     return (
-      <div className="App">
+      <div>
         <Header />
         <Switch>
           <Route exact path='/create-new-project' component={CreateNewProject} />
