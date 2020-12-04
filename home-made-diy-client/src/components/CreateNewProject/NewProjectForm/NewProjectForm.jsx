@@ -44,7 +44,7 @@ const NewProjectForm = (props) => {
 		})
 			// console.log(res)
 			.then((res) =>
-				props.history.push(`/${res.data.project.id}/add-step-1`)
+				props.history.push(`/${res.data.project.id}/add-steps`)
 			)
 			.catch((err) => console.log(err));
 	};
