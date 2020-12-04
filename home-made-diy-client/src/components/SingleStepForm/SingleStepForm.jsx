@@ -1,31 +1,13 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import ProjectImagePreview from '../CreateNewProject/NewProjectForm/ProjectImagePreview/ProjectImagePreview'
 
-//components
-import PageLoading from "../PageLoading/PageLoading";
-import ProjectImagePreview from "../CreateNewProject/NewProjectForm/ProjectImagePreview/ProjectImagePreview";
-import SingleStepForm from '../SingleStepForm/SingleStepForm'
+import React, {useState} from 'react';
 
-//bootstrap imports
-import { Form, Container, Button } from "react-bootstrap";
+import {Form, Button} from 'react-bootstrap'
 
-const AddStepForm = (props) => {
-	const [project, setProject] = useState(null);
-	const [step, setStep] = useState({
-		heading: "",
-		content: "",
-		stepImage: "",
-	});
-	console.log(props);
-
-	useEffect(() => {
-		const id = props.match.params.id;
-		axios
-			.get(`http://localhost:5000/api/projects/${id}`)
-			.then((res) => setProject(res.data.project));
-	}, [props.match.params.id]);
-
-	const handleChange = (e) => {
+const SingleStepForm = (props) => {
+   const [step, setStep] = useState("")
+   
+   const handleChange = (e) => {
 		if (e.target.name === "stepImage") {
 			try {
 				setStep({
@@ -42,18 +24,8 @@ const AddStepForm = (props) => {
 			});
 		}
 	};
-
-	console.log(step);
-	return (
-		<div>
-			{!project && <PageLoading />}
-			{project && (
-				<Container>
-					<h1>
-						Adding Step 1 for <em>{project.title}</em>
-					</h1>
-					<h4>{project.description}</h4>
-					<Form encType="multipart/form-data">
+   return (
+      <Form encType="multipart/form-data">
 						<Form.Group controlId="formGroupStepTitle">
 							<Form.Label>Add a heading to your step:</Form.Label>
 							<Form.Control
@@ -86,11 +58,7 @@ const AddStepForm = (props) => {
 						<Button>Add Another Step</Button>
 						<Button>Publish Project</Button>
 					</Form>
-					<SingleStepForm/>
-				</Container>
-			)}
-		</div>
-	);
+   );
 };
 
-export default AddStepForm;
+export default SingleStepForm;
