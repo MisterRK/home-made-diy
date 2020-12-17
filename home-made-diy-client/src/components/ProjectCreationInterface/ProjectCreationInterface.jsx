@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios'
 
 import {Form, Button} from 'react-bootstrap'
-import ProjectImagePreview from '../CreateNewProject/NewProjectForm/ProjectImagePreview/ProjectImagePreview'
+import ProjectImagePreview from '../NewProjectForm/ProjectImagePreview/ProjectImagePreview'
 
 const ProjectCreationInterface = (props) => {
    const [project, setProject] = useState(null);

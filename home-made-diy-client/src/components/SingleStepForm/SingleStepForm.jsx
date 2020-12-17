@@ -1,4 +1,4 @@
-import ProjectImagePreview from '../CreateNewProject/NewProjectForm/ProjectImagePreview/ProjectImagePreview'
+import ProjectImagePreview from '../NewProjectForm/ProjectImagePreview/ProjectImagePreview'
 
 import React, {useState} from 'react';
 

@@ -3,7 +3,7 @@ import axios from "axios";
 
 //components
 import PageLoading from "../PageLoading/PageLoading";
-import ProjectImagePreview from "../CreateNewProject/NewProjectForm/ProjectImagePreview/ProjectImagePreview";
+import ProjectImagePreview from "../NewProjectForm/ProjectImagePreview/ProjectImagePreview";
 import SingleStepForm from '../SingleStepForm/SingleStepForm'
 
 //bootstrap imports
