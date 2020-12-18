@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,CAAC;EACL,UAAU,EAAE,IAAI;CAClB",
+    "sources": [
+        "NewProjectForm.scss"
+    ],
+    "names": [],
+    "file": "NewProjectForm.css"
+}

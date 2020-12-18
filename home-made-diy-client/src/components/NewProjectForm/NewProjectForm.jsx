@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { withRouter } from "react-router";
+import './NewProjectForm.scss'
 
 //component imports
 import ProjectImagePreview from "./ProjectImagePreview/ProjectImagePreview";
 
 //bootstrap imports
-import {Container, Form, Button} from 'react-bootstrap'
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const NewProjectForm = (props) => {
 	const [projectInfo, setProjectInfo] = useState({
@@ -48,7 +49,9 @@ const NewProjectForm = (props) => {
 
 	return (
 		<Container>
-			<h2>Get Started with the Basics</h2>
+			<Row className="header">
+				<h2>Get Started with the Basics</h2>
+			</Row>
 			<Form encType="multipart/form-data" onSubmit={handleSubmit}>
 				<Form.Group controlId="formGroupProjectTitle">
 					<Form.Label>Project Title:</Form.Label>
